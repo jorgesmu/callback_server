@@ -8,7 +8,8 @@ When developing HTTP web applications many frameworks and HTTP clients introduce
 
 Disclaimer: Proper automated tests should be done, this is a playground for developing time.
 
-(Currently) Implemented HTTP actions:
+Implemented HTTP actions:
+- Get
 - Post (Currently needed to test server callbacks from a cron job)
 
 Usage: 

@@ -3,8 +3,7 @@ from io import BytesIO
 
 
 class ReplyPostRequestHandler(BaseHTTPRequestHandler):
-
-    def do_POST(self):
+    def __reply(self):
         content_length = int(self.headers['Content-Length'])
         body = self.rfile.read(content_length)
         self.send_response(200)
@@ -15,6 +14,14 @@ class ReplyPostRequestHandler(BaseHTTPRequestHandler):
         response.write(b'\n\r')
         response.write(b'Body: ' + str.encode(str(body)))
         self.wfile.write(response.getvalue())
+
+
+    def do_POST(self):
+        self.__reply()
+
+
+    def do_GET(self):
+        self.__reply()
 
 PORT = 8000
 httpd = HTTPServer(('localhost', 8000), ReplyPostRequestHandler)
